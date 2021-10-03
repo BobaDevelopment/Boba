@@ -1,0 +1,17 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/index/index",
+        "pages/game/game",
+        "pages/logs/logs"
+        
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "博霸",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

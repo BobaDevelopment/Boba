@@ -1,0 +1,62 @@
+/* pages/home/home.wxss */
+/**index.wxss**/
+page{
+    width: 100%;
+    height: 100%;
+  }
+  .bg {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+  .title {
+    position: absolute;
+    left: 172rpx;
+    top: 118rpx;
+    color: rgba(116, 23, 23, 100);
+    font-size: 200rpx;
+    text-align: left;
+    font-family: YSHaoShenTi-regular;
+  
+  }
+  .button1 {
+    position: absolute;
+    left: 225rpx;
+    bottom: 438rpx;
+    border-radius: 20rpx 20rpx 20rpx 20rpx;
+    background-color: rgba(197, 64, 64, 100);
+    color: rgba(255, 222, 0, 100);
+    font-size: 46rpx;
+    box-shadow: 6rpx 6rpx 12rpx 0rpx rgba(0, 0, 0, 0.8);
+    font-family: Microsoft Yahei;
+    border: 4rpx solid rgba(255, 246, 107, 100);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button2 {
+    position: absolute;
+    left: 225rpx;
+    bottom: 210rpx;
+    border-radius: 20rpx 20rpx 20rpx 20rpx;
+    background-color: rgba(255, 91, 42, 100);
+    color: rgba(255, 222, 0, 100);
+    font-size: 46rpx;
+    box-shadow: 6rpx 6rpx 12rpx 0rpx rgba(0, 0, 0, 0.8);
+    font-family: Microsoft Yahei;
+    border: 4rpx solid rgba(255, 246, 107, 100);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+  }
+  .head {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80rpx;
+    line-height: 40rpx;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(187, 187, 187, 100);  
+  }
