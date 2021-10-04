@@ -1,0 +1,156 @@
+/* pages/createRoom/createRoom.wxss */
+page {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 600rpx;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
+.up {
+    position: absolute;
+    z-index: 1;
+}
+
+.head {
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80rpx;
+    line-height: 40rpx;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(187, 187, 187, 100);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.head button[plain] {
+    position: relative;
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+
+}
+
+.back {
+    position: absolute;
+    left: 0rpx;
+    width: 80rpx;
+}
+
+.finish {
+    position: absolute;
+    right: 0rpx;
+    width: 80rpx;
+}
+
+.scroll-list {
+    position: relative; 
+}
+
+.page-section {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.input-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+
+.room-name {
+    display: flex;
+    justify-content: left;
+    margin: 30rpx;
+}
+
+.room-num {
+    display: flex;
+    justify-content: left;
+    margin: 30rpx;
+}
+
+.room-name-input {
+    width: 368rpx;
+    height: 68rpx;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 36rpx;
+    text-align: center;
+    box-shadow: 2rpx 2rpx 6rpx 0 rgba(0, 0, 0, 0.4);
+    font-family: Microsoft Yahei;
+    border: 1px solid rgba(187, 187, 187, 100);
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.room-name-title {
+    margin-right: 80rpx;
+    width: 148rpx;
+    height: 72rpx;
+    color: rgba(16, 16, 16, 100);
+    font-size: 48rpx;
+    text-align: left;
+    font-family: YSHaoShenTi-regular;
+}
+
+.room-num-input {
+    left: 294rpx;
+    top: 270rpx;
+    width: 368rpx;
+    height: 68rpx;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 36rpx;
+    text-align: center;
+    box-shadow: 2rpx 2rpx 6rpx 0 rgba(0, 0, 0, 0.4);
+    font-family: Microsoft Yahei;
+    border: 1px solid rgba(187, 187, 187, 100);
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.room-num-title {
+    margin-right: 34rpx;
+    left: 66rpx;
+    top: 270rpx;
+    width: 148rpx;
+    height: 72rpx;
+    color: rgba(16, 16, 16, 100);
+    font-size: 48rpx;
+    text-align: left;
+    font-family: YSHaoShenTi-regular;
+}
+
+.card-body {
+    left: 66rpx;
+    top: 270rpx;
+    width: 148rpx;
+    height: 72rpx;
+    color: rgba(16, 16, 16, 100);
+    font-size: 48rpx;
+    text-align: left;
+    font-family: YSHaoShenTi-regular;
+}

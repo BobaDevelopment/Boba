@@ -1,62 +1,202 @@
 /* pages/home/home.wxss */
 /**index.wxss**/
-page{
-    width: 100%;
-    height: 100%;
-  }
-  .bg {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-  }
-  .title {
-    position: absolute;
-    left: 172rpx;
-    top: 118rpx;
-    color: rgba(116, 23, 23, 100);
-    font-size: 200rpx;
-    text-align: left;
-    font-family: YSHaoShenTi-regular;
-  
-  }
-  .button1 {
-    position: absolute;
-    left: 225rpx;
-    bottom: 438rpx;
-    border-radius: 20rpx 20rpx 20rpx 20rpx;
-    background-color: rgba(197, 64, 64, 100);
-    color: rgba(255, 222, 0, 100);
-    font-size: 46rpx;
-    box-shadow: 6rpx 6rpx 12rpx 0rpx rgba(0, 0, 0, 0.8);
-    font-family: Microsoft Yahei;
-    border: 4rpx solid rgba(255, 246, 107, 100);
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .button2 {
-    position: absolute;
-    left: 225rpx;
-    bottom: 210rpx;
-    border-radius: 20rpx 20rpx 20rpx 20rpx;
-    background-color: rgba(255, 91, 42, 100);
-    color: rgba(255, 222, 0, 100);
-    font-size: 46rpx;
-    box-shadow: 6rpx 6rpx 12rpx 0rpx rgba(0, 0, 0, 0.8);
-    font-family: Microsoft Yahei;
-    border: 4rpx solid rgba(255, 246, 107, 100);
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-  }
-  .head {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 80rpx;
-    line-height: 40rpx;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgba(187, 187, 187, 100);  
-  }
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.bg {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  left: 172rpx;
+  top: 118rpx;
+  color: rgba(116, 23, 23, 100);
+  font-size: 200rpx;
+  text-align: left;
+  font-family: YSHaoShenTi-regular;
+
+}
+
+.button1 {
+  position: absolute;
+  left: 225rpx;
+  bottom: 438rpx;
+  border-radius: 20rpx 20rpx 20rpx 20rpx;
+  background-color: rgba(197, 64, 64, 100);
+  color: rgba(255, 222, 0, 100);
+  font-size: 46rpx;
+  box-shadow: 6rpx 6rpx 12rpx 0rpx rgba(0, 0, 0, 0.8);
+  font-family: Microsoft Yahei;
+  border: 4rpx solid rgba(255, 246, 107, 100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button2 {
+  position: absolute;
+  left: 225rpx;
+  bottom: 210rpx;
+  border-radius: 20rpx 20rpx 20rpx 20rpx;
+  background-color: rgba(255, 91, 42, 100);
+  color: rgba(255, 222, 0, 100);
+  font-size: 46rpx;
+  box-shadow: 6rpx 6rpx 12rpx 0rpx rgba(0, 0, 0, 0.8);
+  font-family: Microsoft Yahei;
+  border: 4rpx solid rgba(255, 246, 107, 100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.head {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 80rpx;
+  line-height: 40rpx;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(187, 187, 187, 100);
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.head button[plain] {
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding: 0;
+
+
+}
+
+.back {
+  position: absolute;
+  left: 0rpx;
+  width: 80rpx;
+}
+
+.finish {
+  position: absolute;
+  right: 0rpx;
+  width: 80rpx;
+}
+
+.input-code {
+  position: absolute;
+  left: 0rpx;
+  top: 400rpx;
+  margin-top: 70rpx;
+  padding: 0 60rpx;
+  display: flex;
+
+}
+
+.input-item {
+  width: 75rpx;
+  height: 75rpx;
+  line-height: 20px;
+  opacity: 0.85;
+  border-radius: 10px 10px 10px 10px;
+  border: 2px solid rgba(187, 187, 187, 100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.input-item:not(:first-child) {
+  margin-left: 25rpx;
+}
+
+.input-value {
+  font-size: 40rpx;
+}
+
+.input-password {
+  position: absolute;
+  left: -360rpx;
+  top: 0;
+  height: 90rpx;
+  width: 880rpx;
+  opacity: 0;
+}
+.room-name-input {
+  position: absolute;
+  left: 294rpx;
+  top: 134rpx;
+  width: 368rpx;
+  height: 68rpx;
+  border-radius: 5px 5px 5px 5px;
+  font-size: 36rpx;
+  text-align: center;
+  box-shadow: 2rpx 2rpx 6rpx 0 rgba(0, 0, 0, 0.4);
+  font-family: Microsoft Yahei;
+  border: 1px solid rgba(187, 187, 187, 100);
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.room-name-title {
+  position: absolute;
+  left: 66rpx;
+  top: 134rpx;
+  width: 148rpx;
+  height: 72rpx;
+  color: rgba(16, 16, 16, 100);
+  font-size: 48rpx;
+  text-align: left;
+  font-family: YSHaoShenTi-regular;
+}
+.room-num-input {
+  position: absolute;
+  left: 294rpx;
+  top: 270rpx;
+  width: 368rpx;
+  height: 68rpx;
+  border-radius: 5px 5px 5px 5px;
+  font-size: 36rpx;
+  text-align: center;
+  box-shadow: 2rpx 2rpx 6rpx 0 rgba(0, 0, 0, 0.4);
+  font-family: Microsoft Yahei;
+  border: 1px solid rgba(187, 187, 187, 100);
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.room-num-title {
+  position: absolute;
+  left: 66rpx;
+  top: 270rpx;
+  width: 148rpx;
+  height: 72rpx;
+  color: rgba(16, 16, 16, 100);
+  font-size: 48rpx;
+  text-align: left;
+  font-family: YSHaoShenTi-regular;
+}
+.input-list {
+  display: flex;
+  justify-content: space-between;
+}
+.card-body {
+  left: 66rpx;
+  top: 270rpx;
+  width: 148rpx;
+  height: 72rpx;
+  color: rgba(16, 16, 16, 100);
+  font-size: 48rpx;
+  text-align: left;
+  font-family: YSHaoShenTi-regular;
+}

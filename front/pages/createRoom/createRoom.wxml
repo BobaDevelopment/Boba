@@ -1,0 +1,36 @@
+<!--pages/createRoom/createRoom.wxml-->
+<view class="container">
+    <image class="bg" mode="scaleToFill" src="../../img/cover.png"></image>
+    <view class='up'>
+        <view class="head" style="width: 746rpx; height: 84rpx;">
+            <button plain="true">
+                <image class="back" bindtap="onBack" mode="widthFix" src="../../img/cancel.png"></image>
+            </button>
+            <button plain="true">
+                <image class="finish" bindtap="onEnter" mode="widthFix" src="../../img/check.png"></image>
+            </button>
+        </view>
+        <view class="scroll-list">
+            <scroll-view class="page-section" scroll-y="ture" style="height: 1116rpx;">
+                <view class="input-list">
+                    <view class="room-name">
+                        <view class='room-name-title' style="width: 148rpx; height: 72rpx;">房间名</view>
+                        <input class="room-name-input" maxlength="10" bindinput="roomNameInput" auto-focus
+                            placeholder="请输入房间名" />
+                    </view>
+                    <view class="room-num">
+                        <view class='room-num-title' style="width: 198rpx; height: 72rpx;">房间人数</view>
+                        <input class="room-num-input" maxlength="3" type="number" bindinput="roomNumInput"
+                            placeholder="请输入人数" />
+                    </view>
+                    <view class="input-item" wx:for="{{1}}" wx:key="index" data-index="{{index}}"></view>
+
+
+
+                    <view class="input-list" mode="widthFix">
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

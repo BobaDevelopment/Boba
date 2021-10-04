@@ -9,9 +9,21 @@
       <button class="button1" bindtap="createRoom" style="height: 140rpx;width: 300rpx;">创建房间</button>
       <button class="button2" bindtap="enterRoom" style="height: 140rpx;width: 300rpx;">加入房间</button>
     </block>
-    <block wx:elif="{{hasRoom==1}}">
-      <view class="head"></view>
+    <block wx:else>
+      <view class="head">
+        <button plain="true">
+          <image class="back" bindtap="onBack" mode="widthFix" src="../../img/cancel.png"></image>
+        </button>
+        <button plain="true">
+          <image class="finish" bindtap="onEnter" mode="widthFix" src="../../img/check.png"></image>
+        </button>
+      </view>
+      <view class="input-code">
+        <view class="input-item" wx:for="{{6}}" wx:key="index" data-index="{{index}}">
+          <view class="input-value">{{roomValue[index]}}</view>
+        </view>
+        <input class="input-password" maxlength="6" bindinput="setValue" bindblur="inputBlur" type="number"></input>
+      </view>
     </block>
-    <block wx:else></block>
   </block>
 </image>
