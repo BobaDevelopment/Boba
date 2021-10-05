@@ -4,7 +4,85 @@ Page({
     data: {
         roomName: '', // 房间名
         personNum: '', //房间人数
+        prizeList: [],
+        // avatarUrl: "../../img/addpic.png",
+        imgs: [],//本地图片地址数组
+        picPaths:[],//网络路径    
     },
+    onLoad: function () {
+        const awardTemp = ["状元", "对堂", "三红", "二举", "一秀"]
+        var that = this;
+        for (var i = 0; i < 5; i++){
+            var obj = {awardType: awardTemp[i], 
+                awardList: [{avatarUrl: "../../img/addpic.png", awardName: '',  awardNum: 0}] 
+            };
+            that.data.prizeList.push(obj);
+            that.data.prizeList.awardList
+        }
+
+        that.setData({prizeList : that.data.prizeList})
+        app.globalData.prizeList = that.data.prizeList
+    },
+       
+    //添加上传图片
+    chooseImageTap: function (e) {
+      var that = this;
+      wx.showActionSheet({
+        itemList: ['从相册中选择', '拍照'],
+        itemColor: "#00000",
+        success: function (res) {
+          if (!res.cancel) {
+            if (res.tapIndex == 0) {
+              that.chooseWxImage('album', e)
+            } else if (res.tapIndex == 1) {
+              that.chooseWxImage('camera', e)
+            }
+          }
+        }
+      })
+    },
+    // 图片本地路径
+    chooseWxImage: function (type, e) {
+      var that = this;
+      var imgsPaths = that.data.imgs;
+      var thatData = this.data.prizeList
+      wx.chooseImage({
+        sizeType: ['original', 'compressed'],
+        sourceType: [type],
+        success: function (res) {
+            thatData[e.currentTarget.dataset.awardIndex].awardList[0].avatarUrl = res.tempFilePaths[0]
+        //   console.log(res.tempFilePaths[0]);
+          that.setData({
+            prizeList: thatData
+          })
+          app.globalData.prizeList = thatData
+          console.log(app.globalData.prizeList)
+        //   that.upImgs(res.tempFilePaths[0], 0) //调用上传方法
+        }
+      }) 
+    },
+    //上传服务器
+    // upImgs: function (imgurl, index) {
+    //   var that = this;
+    //   wx.uploadFile({
+    //     url: 'https://xxxxxxxxxxxxxxxxxxxxxxxxxxxx',//
+    //     filePath: imgurl,
+    //     name: 'file',
+    //     header: {
+    //       'content-type': 'multipart/form-data'
+    //     },
+    //     formData: null,
+    //     success: function (res) {
+    //       console.log(res) //接口返回网络路径
+    //       var data = JSON.parse(res.data)
+    //         that.data.picPaths.push(data['msg'])
+    //         that.setData({
+    //           picPaths: that.data.picPaths
+    //         })
+    //         console.log(that.data.picPaths)
+    //     }
+    //   })
+    // },
     roomNameInput: function (e) {
         app.globalData.roomName = e.detail.value;
         this.setData({
@@ -18,6 +96,23 @@ Page({
             personNum: e.detail.value
         })
     },
+    awardNameInput: function (e){
+        var thatData = this.data.prizeList
+        thatData[e.currentTarget.dataset.awardIndex].awardList[0].awardName = e.detail.value
+        this.setData({
+            prizeList: thatData
+        })
+        app.globalData.prizeList = thatData
+    },
+    
+    awardNumInput: function (e){
+        var thatData = this.data.prizeList
+        thatData[e.currentTarget.dataset.awardIndex].awardList[0].awardNum = e.detail.value
+        this.setData({
+            prizeList: thatData
+        })
+        app.globalData.prizeList = thatData
+    },
     onBack: function() {
         wx.navigateBack({
             delta: 2
@@ -26,4 +121,5 @@ Page({
     onEnter: function() {
 
     },
+
 })

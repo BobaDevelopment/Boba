@@ -143,14 +143,145 @@ page {
     text-align: left;
     font-family: YSHaoShenTi-regular;
 }
-
+.input-item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
 .card-body {
-    left: 66rpx;
-    top: 270rpx;
-    width: 148rpx;
-    height: 72rpx;
+    line-height: 40rpx;
+    opacity: 0.85;
+    border-radius: 40rpx 40rpx 40rpx 40rpx;
+    background-color: rgba(255, 242, 213, 100);
     color: rgba(16, 16, 16, 100);
-    font-size: 48rpx;
+    font-size: 28rpx;
+    text-align: center;
+    box-shadow: 10px 10px 12px 0px rgba(0, 0, 0, 0.4);
+    font-family: Arial;
+    border: 4rpx solid rgba(255, 255, 255, 100);
+    margin-bottom: 50rpx; 
+    display: flex;
+    flex-direction: column;
+}
+.first-line{
+    display: flex;
+    flex-direction: row;
+    margin-top: 24rpx;
+    margin-bottom: 10rpx;
+}
+.award-type {
+    margin-left: 10rpx;
+    border: 0rpx;
+    color: #D41437;
+    font-size: 40rpx;
+    text-align: center;
+    font-weight: bold;
+    font-family: PingFangSC-semiBold;
+}
+.top-title {
+    margin-left: 130rpx;
+    color: rgba(118, 58, 58, 100);
+    font-size: 40rpx;
+    text-align: center;
+    font-weight: bold;
+    font-family: PingFangSC-semiBold;
+}
+.input-box {
+    width: 594rpx;
+    height: 194rpx;
+    color: #000;
+    background-color: rgb(245, 216, 193);
+    border: 4rpx solid rgba(255, 255, 255, 100);
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+}
+.input-image-box {
+    margin-top: 36rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image-upload-box {
+    width: 120rpx;
+    height: 120rpx;
+}
+.image-upload-txt {
+    margin-top: 2rpx;
+    color: rgba(16, 16, 16, 100);
+    font-size: 28rpx;
+    text-align: left;
+    font-family: YSHaoShenTi-regular;    
+}
+.input-award-box {
+    width: 368rpx;
+    height: 194rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.award-name {
+    display: flex;
+    flex-direction: row; 
+}
+.award-num {
+    display: flex;
+    flex-direction: row; 
+}
+.award-name-input {
+    width: 260rpx;
+    height: 56rpx;
+    opacity: 0.81;
+    background-color: white;
+    border-radius: 10rpx 10rpx 10rpx 10rpx;
+    font-size: 28rpx;
+    text-align: left;
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.4);
+    font-family: Microsoft Yahei;
+    border: 1px solid rgba(187, 187, 187, 100);
+}
+.award-name-title {
+    margin: 10rpx;
+    color: rgba(16, 16, 16, 100);
+    font-size: 28rpx;
+    text-align: left;
+    font-weight: bold;
+    font-family: YSHaoShenTi-regular;
+}
+
+.award-num-input {
+    width: 260rpx;
+    height: 56rpx;
+    opacity: 0.81;
+    background-color: white;
+    border-radius: 10rpx 10rpx 10rpx 10rpx;
+    font-size: 28rpx;
+    text-align: left;
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.4);
+    font-family: Microsoft Yahei;
+    border: 1px solid rgba(187, 187, 187, 100);
+}
+
+.award-num-title {
+    margin: 10rpx;
+    color: rgba(16, 16, 16, 100);
+    font-size: 28rpx;
+    font-weight: bold;
     text-align: left;
     font-family: YSHaoShenTi-regular;
+}
+
+.add-award[plain] {
+    border: 0rpx;
+    margin: 0rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addto {
+    width: 80rpx;
 }

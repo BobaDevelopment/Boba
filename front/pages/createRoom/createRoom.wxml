@@ -20,15 +20,42 @@
                     </view>
                     <view class="room-num">
                         <view class='room-num-title' style="width: 198rpx; height: 72rpx;">房间人数</view>
-                        <input class="room-num-input" maxlength="3" type="number" bindinput="roomNumInput"
+                        <input class="room-num-input" maxlength="2" type="number" bindinput="roomNumInput"
                             placeholder="请输入人数" />
                     </view>
-                    <view class="input-item" wx:for="{{1}}" wx:key="index" data-index="{{index}}"></view>
-
-
-
-                    <view class="input-list" mode="widthFix">
+                    <view class="input-item">
+                        <view class="card-body" wx:for="{{prizeList}}" wx:key="index">
+                            <view class="first-line">
+                                <view class="award-type">{{item.awardType}}</view>
+                                <view class="top-title">奖品设置</view>
+                            </view>
+                            <view class="input-box">
+                                <view class="input-image-box">
+                                    <image class="image-upload-box" src="{{item.awardList[0].avatarUrl}}"
+                                        bindtap='chooseImageTap' data-award-index="{{index}}"></image>
+                                    <view class="image-upload-txt">上传图片</view>
+                                </view>
+                                <view class="input-award-box">
+                                    <view class="award-name">
+                                        <view class='award-name-title' style="width: 64rpx; height: 46rpx;">奖品</view>
+                                        <input class="award-name-input" maxlength="10" bindinput="awardNameInput"
+                                            data-award-index="{{index}}" auto-focus placeholder="请输入奖品名" />
+                                    </view>
+                                    <view class="award-num">
+                                        <view class='award-num-title' style="width: 64rpx; height: 46rpx;">数量</view>
+                                        <input class="award-num-input" maxlength="2" type="number"
+                                            bindinput="awardNumInput" data-award-index="{{index}}"
+                                            placeholder="请输入数量" />
+                                    </view>
+                                </view>
+                            </view>
+                            <button class="add-award" plain="true" style="width: 600rpx; height: 70rpx;">
+                                <image class="addto" src="../../img/addto.png" mode="widthFix"></image>
+                            </button>
+                        </view>
                     </view>
+
+
                 </view>
             </scroll-view>
         </view>
