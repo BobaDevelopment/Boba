@@ -11,7 +11,7 @@
             </button>
         </view>
         <view class="scroll-list">
-            <scroll-view class="page-section" scroll-y="ture" style="height: 1116rpx;">
+            <scroll-view class="page-section" scroll-y="ture" style="height: {{2*height}}rpx;">
                 <view class="input-list">
                     <view class="room-name">
                         <view class='room-name-title' style="width: 148rpx; height: 72rpx;">房间名</view>
@@ -39,7 +39,7 @@
                                     <view class="award-name">
                                         <view class='award-name-title' style="width: 64rpx; height: 46rpx;">奖品</view>
                                         <input class="award-name-input" maxlength="10" bindinput="awardNameInput"
-                                            data-award-index="{{index}}" auto-focus placeholder="请输入奖品名" />
+                                            data-award-index="{{index}}"  placeholder="请输入奖品名" />
                                     </view>
                                     <view class="award-num">
                                         <view class='award-num-title' style="width: 64rpx; height: 46rpx;">数量</view>
@@ -50,7 +50,7 @@
                                 </view>
                             </view>
                             <button class="add-award" plain="true" style="width: 600rpx; height: 70rpx;">
-                                <image class="addto" src="../../img/addto.png" mode="widthFix"></image>
+                                <image class="addto" src="../../img/addto.png" style="width: 80rpx; height: 80rpx;"></image>
                             </button>
                         </view>
                     </view>

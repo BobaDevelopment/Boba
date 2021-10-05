@@ -7,9 +7,14 @@ Page({
         prizeList: [],
         // avatarUrl: "../../img/addpic.png",
         imgs: [],//本地图片地址数组
-        picPaths:[],//网络路径    
+        picPaths:[],//网络路径
+        height: 0,    
     },
     onLoad: function () {
+        let screenHeight = wx.getSystemInfoSync().windowHeight;
+        this.setData({
+            height: screenHeight - 44,
+        });
         const awardTemp = ["状元", "对堂", "三红", "二举", "一秀"]
         var that = this;
         for (var i = 0; i < 5; i++){
@@ -19,7 +24,6 @@ Page({
             that.data.prizeList.push(obj);
             that.data.prizeList.awardList
         }
-
         that.setData({prizeList : that.data.prizeList})
         app.globalData.prizeList = that.data.prizeList
     },
