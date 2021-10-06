@@ -1,66 +1,20 @@
 // pages/game/game.js
+const app = getApp();
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-
+        userInfo: {},
+        roomName: app.globalData.roomName, // 房间名
+        personNum: app.globalData.personNum, //房间人数
+        prizeList: app.globalData. prizeList,
+        userList: [{userName:"番茄", userImage:"../../img/cover.png"}, {userName:"番茄", userImage:"../../img/cover.png"}, {userName:"番茄", userImage:"../../img/cover.png"}, {userName:"番茄", userImage:"../../img/cover.png"}, {userName:"番茄", userImage:"../../img/cover.png"},],
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            roomName: "2021实验室中秋博饼"
+          })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

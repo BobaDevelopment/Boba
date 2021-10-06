@@ -1,9 +1,8 @@
 {
     "pages": [
         "pages/home/home",
-        "pages/createRoom/createRoom",
-        "pages/index/index",
         "pages/game/game",
+        "pages/createRoom/createRoom",
         "pages/logs/logs"
     ],
     "window": {

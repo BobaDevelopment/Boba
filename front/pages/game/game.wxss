@@ -1,1 +1,158 @@
 /* pages/game/game.wxss */
+page {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.up {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+.room-name {
+    position: absolute;
+    left: 175.2rpx;
+    top: 36rpx;
+    width: 400rpx;
+    height: 48rpx;
+    color: rgba(116, 23, 23, 100);
+    font-size: 40rpx;
+    text-align: center;
+    font-weight: bold;
+    font-family: YSHaoShenTi-regular;
+    
+}
+.bowl {
+    position: absolute;
+    left: 108rpx;
+    top: 386rpx;
+    width: 534rpx;
+    height: 512rpx;
+}
+.play {
+    position: absolute;
+    left: 112rpx;
+    top: 938rpx;
+    width: 204rpx;
+    height: 96rpx;
+    border-radius: 20rpx 20rpx 20rpx 20rpx;
+    background-color: rgba(255, 91, 42, 100);
+    color: rgba(255, 222, 0, 100);
+    font-size: 56rpx;
+    text-align: center;
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.8);
+    font-family: Microsoft Yahei;
+    border: 4rpx solid rgba(255, 246, 107, 100);  
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+.photo {
+    position: absolute;
+    left: 442rpx;
+    top: 938rpx;
+    width: 204rpx;
+    height: 96rpx;
+    border-radius: 20rpx 20rpx 20rpx 20rpx;
+    background-color: rgba(255, 91, 42, 100);
+    color: rgba(255, 222, 0, 100);
+    font-size: 56rpx;
+    text-align: center;
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.8);
+    font-family: Microsoft Yahei;
+    border: 4rpx solid rgba(255, 246, 107, 100);  
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+.user-box {
+    position: absolute;
+    left: 51rpx;
+    top: 120rpx;
+    width: 648rpx;
+    height: 148rpx;
+    line-height: 40rpx;
+    opacity: 0.9;
+    border-radius: 20rpx 20rpx 20rpx 20rpx;
+    text-align: center;
+    box-shadow: 04px 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(187, 187, 187, 100);    
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.user{
+    margin: 10rpx;
+    background-color: white;
+    width: 80rpx;
+    height: 130rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.user-image {
+    border-radius: 12rpx;
+    margin-top: 10rpx;
+    width: 80rpx;
+    height: 120rpx;
+}
+.user-name {
+    color: #000;
+    font-size: 24rpx;
+    text-align: center;
+    font-family: PingFangSC-semiBold;    
+}
+.guide {
+    position: absolute;
+    background-color: white;
+    left: 0rpx;
+    bottom: 0rpx;
+    width:752rpx;
+    height: 96rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border: 2rpx solid rgba(187, 187, 187, 100);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.guide image {
+    width: 84rpx;
+    height: 84rpx;
+}
+.out-room {
+    background-color: white;
+    position: absolute;
+    top: 32rpx;
+    left: 626rpx;
+    width:100rpx;
+    height: 60rpx;
+    line-height: 40rpx;
+    opacity: 0.75;
+    border-radius: 20rpx 20rpx 20rpx 20rpx;
+    text-align: center;
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.4);
+    border: 2rpx solid rgba(187, 187, 187, 100);
+    
+}
+.out-room-icon {
+    width: 60rpx;
+    margin-bottom: 2rpx;
+}
+
+

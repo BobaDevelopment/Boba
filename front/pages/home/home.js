@@ -3,14 +3,15 @@ const app = getApp();
 Page({
   data: {
     userInfo: {},
-    hasUserInfo: false,
-    canIUseGetUserProfile: false,
+    hasUserInfo: app.globalData.hasUserInfo,
+    canIUseGetUserProfile: app.globalData.canIUseGetUserProfile,
     hasRoom: 0,
     focusIndex: 0, // 光标所在位置
     roomValue: '', // 房间邀请码
   },
   onLoad() {
     if (wx.getUserProfile) {
+      app.globalData.canIUseGetUserProfile = true;
       this.setData({
         canIUseGetUserProfile: true
       })
@@ -46,12 +47,31 @@ Page({
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
+        app.globalData.hasUserInfo = true;
         app.globalData.userInfo = res.userInfo;
-        console.log(app.globalData.hasUserInfo);
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+      }
+
+    })
+    wx.login({
+      success (res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'http://192.168.50.51:5000/user/login',
+            data: {
+              code: res.code
+            },
+            success (res) {
+              app.globalData.token = res.data.data.token
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
       }
     })
   },
