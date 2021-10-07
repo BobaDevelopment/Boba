@@ -3,19 +3,24 @@ const app = getApp();
 Page({
   data: {
     userInfo: {},
-    hasUserInfo: app.globalData.hasUserInfo,
-    canIUseGetUserProfile: app.globalData.canIUseGetUserProfile,
+    hasUserInfo: false,
+    canIUseGetUserProfile: false,
     hasRoom: 0,
     focusIndex: 0, // 光标所在位置
     roomValue: '', // 房间邀请码
   },
   onLoad() {
+    this.setData({
+      hasUserInfo: app.globalData.hasUserInfo,
+      canIUseGetUserProfile: app.globalData.canIUseGetUserProfile,
+    })
     if (wx.getUserProfile) {
       app.globalData.canIUseGetUserProfile = true;
       this.setData({
         canIUseGetUserProfile: true
       })
     }
+    
   },
   createRoom: function() {
     wx.navigateTo({
@@ -92,5 +97,6 @@ Page({
       })
     }
   },
+  
 })
 

@@ -9,6 +9,7 @@ Page({
     imgs: [], //本地图片地址数组
     picPaths: [], //网络路径
     height: 0,
+    inviteCode: '',
   },
   onLoad: function () {
     let screenHeight = wx.getSystemInfoSync().windowHeight;
@@ -21,7 +22,7 @@ Page({
       var obj = {
         awardType: awardTemp[i],
         awardList: [{
-          avatarUrl: "../../img/addpic.png",
+          avatarUrl: "http://192.168.50.51:5000/file/download/addpic.png",
           awardName: '',
           awardNum: 0,
           level: i + 1,
@@ -57,44 +58,40 @@ Page({
   chooseWxImage: function (type, e) {
     var that = this;
     var imgsPaths = that.data.imgs;
-    var thatData = this.data.prizeList
+    
     wx.chooseImage({
       sizeType: ['original', 'compressed'],
       sourceType: [type],
       success: function (res) {
-        thatData[e.currentTarget.dataset.awardIndex].awardList[0].avatarUrl = res.tempFilePaths[0]
-        //   console.log(res.tempFilePaths[0]);
-        that.setData({
-          prizeList: thatData
-        })
-        app.globalData.prizeList = thatData
-        console.log(app.globalData.prizeList)
-        //   that.upImgs(res.tempFilePaths[0], 0) //调用上传方法
+        that.upImgs(res.tempFilePaths[0], e) //调用上传方法
       }
     })
   },
   //上传服务器
-  // upImgs: function (imgurl, index) {
-  //   var that = this;
-  //   wx.uploadFile({
-  //     url: 'http://192.168.50.51:5000/file/upload',//
-  //     filePath: imgurl,
-  //     name: 'file',
-  //     header: {
-  //       'content-type': 'multipart/form-data'
-  //     },
-  //     formData: null,
-  //     success: function (res) {
-  //       console.log(res) //接口返回网络路径
-  //       var data = JSON.parse(res.data)
-  //         that.data.picPaths.push(data['msg'])
-  //         that.setData({
-  //           picPaths: that.data.picPaths
-  //         })
-  //         console.log(that.data.picPaths)
-  //     }
-  //   })
-  // },
+  upImgs: function (imgurl, e) {
+    var that = this;
+    var thatData = this.data.prizeList
+    wx.uploadFile({
+      url: 'http://192.168.50.51:5000/file/upload',
+      filePath: imgurl,
+      name: 'file',
+      header: {
+        'content-type': 'multipart/form-data'
+      },
+      formData: null,
+      success: function (res) {
+        // console.log(res) //接口返回网络路径
+        var data = JSON.parse(res.data)
+        // console.log(data.data.url)
+        thatData[e.currentTarget.dataset.awardIndex].awardList[0].avatarUrl = data.data.url
+        that.setData({
+          prizeList: thatData
+        })
+        app.globalData.prizeList = thatData
+        // console.log(app.globalData.prizeList)
+      }
+    })
+  },
   roomNameInput: function (e) {
     app.globalData.roomName = e.detail.value;
     this.setData({
@@ -113,7 +110,7 @@ Page({
     this.setData({
       prizeList: thatData
     })
-    console.log(this.data.prizeList)
+    // console.log(this.data.prizeList)
     app.globalData.prizeList = thatData
   },
 
@@ -146,7 +143,12 @@ Page({
         "prizeList": app.globalData.prizeList
       },
       success: function (res) {
-        console.log(res.data)
+        //console.log(res.data.data.invitecode)
+        that.setData({
+          inviteCode: res.data.data.invitecode
+        })
+        that.joinRoom(res.data.data.invitecode)
+        app.globalData.inviteCode = res.data.data.invitecode
         // console.log(res) //接口返回网络路径
         // var data = JSON.parse(res.data)
         // that.data.picPaths.push(data['msg'])
@@ -156,10 +158,28 @@ Page({
         // console.log(that.data.picPaths)
       }
     })
+   
     wx.reLaunch({
       url: '../game/game'
     })
   },
-  
+  joinRoom: function(invidecode) {
+    wx.request({
+      url: "http://192.168.50.51:5000/user/joinroom",
+      method: "POST",
+      header: {
+        "content-type": "application/json",
+        "Authorization": "Bearer " + app.globalData.token
+      },
+      data: {
+        "inviteCode":  invidecode,
+        "avatar": app.globalData.userInfo.avatarUrl,
+        "username": app.globalData.userInfo.nickName
+      },
+      success: function (res) {
+        app.globalData.roomId = res.data.data.roomId
+      }
+    })
+  }
 
 })

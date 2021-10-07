@@ -1,9 +1,12 @@
 {
     "pages": [
+        
         "pages/home/home",
         "pages/game/game",
         "pages/createRoom/createRoom",
-        "pages/logs/logs"
+        "pages/logs/logs",
+        "pages/myAward/myAward",
+        "pages/remainAward/remainAward"
     ],
     "window": {
         "backgroundTextStyle": "light",

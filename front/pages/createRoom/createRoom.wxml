@@ -1,13 +1,13 @@
 <!--pages/createRoom/createRoom.wxml-->
 <view class="container">
-    <image class="bg" mode="scaleToFill" src="../../img/cover.png"></image>
+    <image class="bg" mode="scaleToFill" src="http://192.168.50.51:5000/file/download/cover.png"></image>
     <view class='up'>
         <view class="head" style="width: 746rpx; height: 84rpx;">
             <button plain="true">
-                <image class="back" bindtap="onBack" mode="widthFix" src="../../img/cancel.png"></image>
+                <image class="back" bindtap="onBack" mode="widthFix" src="http://192.168.50.51:5000/file/download/cancel.png"></image>
             </button>
             <button plain="true">
-                <image class="finish" bindtap="onEnter" mode="widthFix" src="../../img/check.png"></image>
+                <image class="finish" bindtap="onEnter" mode="widthFix" src="http://192.168.50.51:5000/file/download/check.png"></image>
             </button>
         </view>
         <view class="scroll-list">
@@ -50,7 +50,7 @@
                                 </view>
                             </view>
                             <button class="add-award" plain="true" style="width: 600rpx; height: 70rpx;">
-                                <image class="addto" src="../../img/addto.png" style="width: 80rpx; height: 80rpx;"></image>
+                                <image class="addto" src="http://192.168.50.51:5000/file/download/addto.png" style="width: 80rpx; height: 80rpx;"></image>
                             </button>
                         </view>
                     </view>

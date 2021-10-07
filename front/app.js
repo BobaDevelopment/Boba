@@ -10,6 +10,7 @@ App({
     award: ["状元", "对堂", "三红", "二举", "一秀"],
     prizeList: [], //奖品清单
     token: "",
+    inviteCode: "",
   },
   onLaunch() {
   },

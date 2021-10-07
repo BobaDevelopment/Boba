@@ -1,22 +1,65 @@
 <!--pages/game/game.wxml-->
+
 <view class="container">
-    <image class="bg" mode="scaleToFill" src="../../img/v2_r00vn1.jpg"></image>
+    <image class="bg" mode="scaleToFill" src="http://192.168.50.51:5000/file/download/v2_r00vn1.jpg"></image>
+
     <view class='up'>
         <view class="room-name">{{roomName}}</view>
+        <view class="room-code">房间号：{{roomCode}}</view>
         <view class="user-box">
             <view class="user" wx:for="{{userList}}" wx:key="index">
                 <image class="user-image" src="{{item.userImage}}"></image>
                 <view class="user-name">{{item.userName}}</view>
             </view>
         </view>
-        <image class="bowl" src="../../img/bowl.png"></image>
-        <view class="out-room"><image class="out-room-icon" src="../../img/getout.png" mode="widthFix"></image></view>
-        <view class="play" bindtap="">投掷</view>
-        <view class="photo" bindtap="">拍照</view>
+        <view class="out-room">
+            <image class="out-room-icon" src="http://192.168.50.51:5000/file/download/getout.png" bindtap="backHome"></image>
+        </view>
+
+        <image class="bowl" src="http://192.168.50.51:5000/file/download/bowl.png"></image>
+        <block wx:if="{{!hasPutDice}}">
+            <view class="message-box">轮到{{gamername}}投掷骰子</view>
+            <view class="play" bindtap="play">投掷</view>
+            <block wx:if="{{hasDiceEffect}}">
+                <image class="dice-effect" src="http://192.168.50.51:5000/file/download/diceeffect.gif"></image>
+            </block>
+            <view class="photo" bindtap="chooseImageTap">拍照</view>
+        </block>
+        <block wx:else>
+            <view class="award-result">恭喜你获得{{prizeType}}</view>
+            <image class="dice1" src="http://192.168.50.51:5000/file/download/dice{{diceResult[0]}}.png"></image>
+            <image class="dice2" src="http://192.168.50.51:5000/file/download/dice{{diceResult[1]}}.png"></image>
+            <image class="dice3" src="http://192.168.50.51:5000/file/download/dice{{diceResult[2]}}.png"></image>
+            <image class="dice4" src="http://192.168.50.51:5000/file/download/dice{{diceResult[3]}}.png"></image>
+            <image class="dice5" src="http://192.168.50.51:5000/file/download/dice{{diceResult[4]}}.png"></image>
+            <image class="dice6" src="http://192.168.50.51:5000/file/download/dice{{diceResult[5]}}.png"></image>
+            <view class="take-award" bindtap="takeAward">选择奖品</view>
+            <block wx:if="{{hasSelectAward}}">
+                <view class="out-background"></view>
+                <view class="select-box">
+                    <view class="select-title">选择奖品</view>
+                    <block wx:key="index" wx:for="{{prizeList[prizeIndex].awardList}}">
+                        <block wx:if="{{item.awardNum>0}}">
+                            <view class="select-award" bindtap="selectAward">
+                                <image class="award-image" src="{{item.avatarUrl}}"></image>
+                                <view class="award-name-box">
+                                    <view class="award-name">{{item.awardName}}</view>
+                                    <view class="award-num-text">1台</view>
+                                </view>
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="noAward">来晚了，奖品已经被抢完！</view>
+                            <image class="back-game" src="http://192.168.50.51:5000/file/download/getout.png" bindtap="backGame"></image>
+                        </block>
+                    </block>
+                </view>
+            </block>
+        </block>
         <view class="guide">
-            <image src="../../img/instruction.png" bindtap=""></image>
-            <image src="../../img/home.png"  bindtap=""></image>
-            <image src="../../img/donework.png"  bindtap=""></image>
+            <image src="http://192.168.50.51:5000/file/download/instruction.png" bindtap=""></image>
+            <image src="http://192.168.50.51:5000/file/download/home.png" bindtap=""></image>
+            <image src="http://192.168.50.51:5000/file/download/donework.png" bindtap=""></image>
         </view>
     </view>
 </view>
