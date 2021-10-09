@@ -44,8 +44,31 @@ Page({
     })
   },
   onEnter: function() {
+    var that = this
+    wx.request({
+      url: "http://192.168.50.51:5000/user/joinroom",
+      method: "POST",
+      header: {
+        "content-type": "application/json",
+        "Authorization": "Bearer " + app.globalData.token
+      },
+      data: {
+        "inviteCode":  app.globalData.roomValue,
+        "avatar": app.globalData.userInfo.avatarUrl,
+        "username": app.globalData.userInfo.nickName
+      },
+      success: function (res) {
+        console.log(res.data)
+        app.globalData.roomId = res.data.data.roomId
+        app.globalData.roomName = res.data.data.roomName
+        wx.reLaunch({
+          url: '../game/game?invitecode=' + res.data.data.roomCode,
+        })
+      }
+    })
+    
+  }, 
 
-  },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

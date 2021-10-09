@@ -11,6 +11,7 @@ App({
     prizeList: [], //奖品清单
     token: "",
     inviteCode: "",
+    roomId: "",
   },
   onLaunch() {
   },

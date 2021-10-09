@@ -6,22 +6,16 @@ Page({
         roomName: '', // 房间名
         personNum: '', //房间人数
         prizeList: [],
-        userList: [{
-            userName: "番茄",
-            userImage: "../../img/cover.png"
-        }, {
-            userName: "番茄",
-            userImage: "../../img/cover.png"
-        }, {
-            userName: "番茄",
-            userImage: "../../img/cover.png"
-        }, {
-            userName: "番茄",
-            userImage: "../../img/cover.png"
-        }, {
-            userName: "番茄",
-            userImage: "../../img/cover.png"
-        }, ],
+        awardList: [],
+        userList: [ {
+            userName: "阙嘉毅",
+            userImage: "http://192.168.50.51:5000/file/download/que.jpg"
+        },
+        {
+            userName: "余佳硕",
+            userImage: "http://192.168.50.51:5000/file/download/shuo.png"
+        },     
+        ],
         inviteCode: '',
         gamername: "",
         hasPutDice: false,
@@ -30,21 +24,49 @@ Page({
         prizeIndex: 0,
         diceResult: [],
         roomId: '',
+        judgement: true,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function (option) {
+        console.log(option)
+        var temp = option.invitecode
         this.setData({
+            inviteCode: option.invitecode,
             roomName: app.globalData.roomName, // 房间名
             personNum: app.globalData.personNum, //房间人数
             prizeList: app.globalData.prizeList,
-            inviteCode: app.globalData.inviteCode,
-            prizeType: "榜眼",
-            roomName: "2021实验室中秋博饼",
-            diceResult: [1, 2, 3, 4, 5, 6],
+           
         })
+        // var that = this;
+        // var times = 0
+        // var i = setInterval(function () {
+        //     while (isStartPage) {
+        //         times++
+        //         if (time > 2) {
+        //             wx.request({
+        //                 url: "http://192.168.50.51:5000/user/isok",
+        //                 method: "POST",
+        //                 header: {
+        //                     "content-type": "application/json",
+        //                     "Authorization": "Bearer " + app.globalData.token
+        //                 },
+        //                 data: {
+        //                     "roomid": that.roomId,
+        //                 },
+        //                 success: function (res) {
+        //                     console.log(res.data)
+        //                 }
+        //             })
+        //             clearInterval(i)
+        //         }
+        //     }
+        // }, 1000)
+    },
+    onUnload: function () {
+        // Do something when page close.
     },
     chooseImageTap: function () {
         var that = this;
@@ -73,6 +95,20 @@ Page({
         })
     },
     backHome() {
+        wx.request({
+            url: "http://192.168.50.51:5000/user/leaveroom",
+            method: "POST",
+            header: {
+              "content-type": "application/json",
+              "Authorization": "Bearer " + app.globalData.token
+            },
+            data: {
+                roomId: app.globalData.roomId,
+            },
+            success: function (res) {
+                console.log(res.data)
+            }
+          })
         wx.redirectTo({
             url: '../home/home'
         })
@@ -105,23 +141,44 @@ Page({
                 filename: "no",
             },
             success: function (res) {
-                console.log(res.data)
+                
+                console.log(res.data.data.awardList.length)
+                if(res.data.data.awardList.length == 0){
+                    that.setData({
+                        judgement: false
+                    })
+                }
                 that.setData({
                     prizeType: res.data.data.resname,
                     prizeIndex: res.data.data.reslevel - 1,
-                    diceResult: res.data.data.dicelist
+                    diceResult: res.data.data.dicelist,
+                    awardList: res.data.data.awardList,
                 })
+                console.log(res.data.data.awardList)
             }
         })
     },
     takeAward: function () {
         var that = this;
-        // console.log(that.prizeList)
-        // console.log(app.globalData.prizeList)
+         wx.request({
+            url: "http://192.168.50.51:5000/user/drop",
+            method: "POST",
+            header: {
+                "content-type": "application/json",
+                "Authorization": "Bearer " + app.globalData.token
+            },
+            data: {
+                roomId: app.globalData.roomId,
+                filename: 'no',
+            },
+            success: function (res) {
+                console.log(res.data)
+            }
+        })
         that.setData({
             hasSelectAward: true,
         })
-        // that.getDiceResult()
+        
     },
     getDiceResult: function () {
         //上传服务器
@@ -141,7 +198,27 @@ Page({
         //     }
         // })
     },
-    selectAward: function () {
+    selectAward: function (e) {
+        //上传服务器
+        var that = this;
+        console.log(e.currentTarget.dataset.awardindex)
+        console.log(e.currentTarget.dataset.alist[e.currentTarget.dataset.awardindex].prizeId)
+        wx.request({
+            url: "http://192.168.50.51:5000/user/chooseprize",
+            method: "POST",
+            header: {
+                "content-type": "application/json",
+                "Authorization": "Bearer " + app.globalData.token
+            },
+            data: {
+                roomid: app.globalData.roomId,
+                prizeid: e.currentTarget.dataset.alist[e.currentTarget.dataset.awardindex].prizeId,
+            },
+            success: function (res) {
+                console.log(res.data)
+                
+            }
+        })
         this.setData({
             hasSelectAward: false,
             hasPutDice: false
@@ -164,14 +241,14 @@ Page({
             },
             formData: null,
             success: function (res) {
-                
-                 //接口返回网络路径
+
+                //接口返回网络路径
                 var data = JSON.parse(res.data)
                 that.imgResult(data.data.filename)
             }
         })
     },
-    imgResult: function(imgUrl){
+    imgResult: function (imgUrl) {
         var that = this
         wx.request({
             url: "http://192.168.50.51:5000/user/drop",
@@ -186,17 +263,30 @@ Page({
             },
             success: function (res) {
                 console.log(res.data)
+                if(res.data.data.awardList.length == 0){
+                    that.setData({
+                        judgement: false
+                    })
+                }
                 that.setData({
                     prizeType: res.data.data.resname,
                     prizeIndex: res.data.data.reslevel - 1,
-                    diceResult: res.data.data.dicelist
+                    diceResult: res.data.data.dicelist,
+                    awardList: res.data.data.awardList,
+                    hasDiceEffect: false,
+                    hasPutDice: true,
                 })
             }
         })
-        that.setData({
-            hasDiceEffect: false,
-            hasPutDice: true,
+    },
+    toRemainAward: function () {
+        wx.navigateTo({
+            url: '../remainAward/remainAward'
+        })
+    },
+    toMyAward: function () {
+        wx.navigateTo({
+            url: '../myAward/myAward'
         })
     }
-
 })

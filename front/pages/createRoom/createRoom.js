@@ -5,7 +5,7 @@ Page({
     roomName: '', // 房间名
     personNum: '', //房间人数
     prizeList: [],
-    // avatarUrl: "../../img/addpic.png",
+    // avatarUrl: "http://192.168.50.51:5000/file/download/addpic.png",
     imgs: [], //本地图片地址数组
     picPaths: [], //网络路径
     height: 0,
@@ -143,12 +143,15 @@ Page({
         "prizeList": app.globalData.prizeList
       },
       success: function (res) {
-        //console.log(res.data.data.invitecode)
+       
         that.setData({
           inviteCode: res.data.data.invitecode
         })
-        that.joinRoom(res.data.data.invitecode)
         app.globalData.inviteCode = res.data.data.invitecode
+        that.joinRoom(res.data.data.invitecode)
+        wx.reLaunch({
+          url: '../game/game?invitecode=' + res.data.data.invitecode,
+        })
         // console.log(res) //接口返回网络路径
         // var data = JSON.parse(res.data)
         // that.data.picPaths.push(data['msg'])
@@ -158,10 +161,7 @@ Page({
         // console.log(that.data.picPaths)
       }
     })
-   
-    wx.reLaunch({
-      url: '../game/game'
-    })
+    
   },
   joinRoom: function(invidecode) {
     wx.request({

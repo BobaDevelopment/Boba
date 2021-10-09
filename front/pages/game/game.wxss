@@ -284,7 +284,7 @@ page {
     z-index: 2;
     position: absolute;
     left: 40rpx;
-    top: 162rpx;
+    top: 40rpx;
     width: 672rpx;
     height: 862rpx;
     line-height: 40rpx;
@@ -311,6 +311,7 @@ page {
     font-family: YSHaoShenTi-regular;
 }
 .select-award {
+    margin: 30rpx;
     background-color: white;
     width: 546rpx;
     height: 250rpx;
@@ -360,7 +361,6 @@ page {
     font-family: YSHaoShenTi-regular;
 }
 .back-game {
-    margin-top: 450rpx;
     width: 100rpx;
     height: 100rpx;
     border-radius: 20rpx;

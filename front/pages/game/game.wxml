@@ -5,7 +5,7 @@
 
     <view class='up'>
         <view class="room-name">{{roomName}}</view>
-        <view class="room-code">房间号：{{roomCode}}</view>
+        <view class="room-code">房间号：{{inviteCode}}</view>
         <view class="user-box">
             <view class="user" wx:for="{{userList}}" wx:key="index">
                 <image class="user-image" src="{{item.userImage}}"></image>
@@ -36,30 +36,25 @@
             <view class="take-award" bindtap="takeAward">选择奖品</view>
             <block wx:if="{{hasSelectAward}}">
                 <view class="out-background"></view>
+                <image class="back-game" src="http://192.168.50.51:5000/file/download/getout.png" bindtap="backGame" style="position: absolute; left: 326rpx; top: 947rpx"></image>
                 <view class="select-box">
                     <view class="select-title">选择奖品</view>
-                    <block wx:key="index" wx:for="{{prizeList[prizeIndex].awardList}}">
-                        <block wx:if="{{item.awardNum>0}}">
-                            <view class="select-award" bindtap="selectAward">
+                    <block wx:key="index" wx:for="{{awardList}}">
+                            <view class="select-award" bindtap="selectAward"  data-awardindex="{{index}}" data-alist="{{awardList}}">
                                 <image class="award-image" src="{{item.avatarUrl}}"></image>
                                 <view class="award-name-box">
                                     <view class="award-name">{{item.awardName}}</view>
                                     <view class="award-num-text">1台</view>
                                 </view>
                             </view>
-                        </block>
-                        <block wx:else>
-                            <view class="noAward">来晚了，奖品已经被抢完！</view>
-                            <image class="back-game" src="http://192.168.50.51:5000/file/download/getout.png" bindtap="backGame"></image>
-                        </block>
                     </block>
                 </view>
             </block>
         </block>
         <view class="guide">
-            <image src="http://192.168.50.51:5000/file/download/instruction.png" bindtap=""></image>
+            <image src="http://192.168.50.51:5000/file/download/instruction.png" bindtap="toRemainAward"></image>
             <image src="http://192.168.50.51:5000/file/download/home.png" bindtap=""></image>
-            <image src="http://192.168.50.51:5000/file/download/donework.png" bindtap=""></image>
+            <image src="http://192.168.50.51:5000/file/download/donework.png" bindtap="toMyAward"></image>
         </view>
     </view>
 </view>

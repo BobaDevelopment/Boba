@@ -1,66 +1,64 @@
 // pages/myAward/myAward.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        awardList: [], 
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        var that = this
+        wx.request({
+            url: "http://192.168.50.51:5000/user/myprize",
+            method: "POST",
+            header: {
+                "content-type": "application/json",
+                "Authorization": "Bearer " + app.globalData.token
+            },
+            data: {
+                roomid: app.globalData.roomId
+            },
+            success: function (res) {
+                console.log(res.data)
+                that.setData({
+                    awardList: res.data.data.awardList
+                })
+                console.log(res.data.data.awardList)
+            }
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    backGame: function() {
+        wx.navigateBack({
+            delta: 2
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+    toRemainAward: function() {
+        wx.redirectTo({
+            url: '../remainAward/remainAward'
+          })
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
+    backHome() {
+        wx.request({
+            url: "http://192.168.50.51:5000/user/leaveroom",
+            method: "POST",
+            header: {
+              "content-type": "application/json",
+              "Authorization": "Bearer " + app.globalData.token
+            },
+            data: {
+                roomId: app.globalData.roomId,
+            },
+            success: function (res) {
+                console.log(res.data)
+            }
+          })
+        wx.redirectTo({
+            url: '../home/home'
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

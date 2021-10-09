@@ -1,1 +1,119 @@
 /* pages/remainAward/remainAward.wxss */
+/* pages/myAward/myAward.wxss */
+page {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.up {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+.out-room {
+    background-color: white;
+    position: absolute;
+    top: 32rpx;
+    left: 626rpx;
+    width:100rpx;
+    height: 60rpx;
+    line-height: 40rpx;
+    opacity: 0.75;
+    border-radius: 20rpx 20rpx 20rpx 20rpx;
+    text-align: center;
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.4);
+    border: 2rpx solid rgba(187, 187, 187, 100);
+    
+}
+.out-room-icon {
+    width: 60rpx;
+    height: 60rpx;
+    margin-bottom: 2rpx;
+}
+.guide {
+    position: absolute;
+    background-color: white;
+    left: 0rpx;
+    bottom: 0rpx;
+    width:752rpx;
+    height: 96rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border: 2rpx solid rgba(187, 187, 187, 100);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.guide image {
+    width: 84rpx;
+    height: 84rpx;
+}
+.remain-award-title{
+    margin-top: 60rpx;
+    width: 346rpx;
+    height: 120rpx;
+    color: rgba(116, 23, 23, 100);
+    font-size: 80rpx;
+    font-family: YSHaoShenTi-regular;
+}
+.my-award-box {
+    margin-bottom: 30rpx;
+    background-color: white;
+    width: 546rpx;
+    height: 250rpx;
+    line-height: 40rpx;
+    opacity: 0.9;
+    border-radius: 20rpx;
+    color: rgba(16, 16, 16, 100);
+    font-size: 28rpx;
+    text-align: center;
+    box-shadow: 0rpx 2rpx 12rpx 0rpx rgba(0, 0, 0, 0.4);
+    font-family: Arial;
+    border: 2rpx solid rgba(187, 187, 187, 100);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;  
+}
+.award-image {
+    width: 200rpx;
+    height: 190rpx;
+    margin-left: 40rpx;
+}
+.award-name-box {
+    margin-left: 20rpx;
+    width: 228rpx;
+    height: 194rpx;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+.award-name {
+    color: rgba(16, 16, 16, 100);
+    font-size: 32rpx;
+    text-align: center;
+    font-family: PingFangSC-bold;   
+}
+.award-num-text {
+    color: rgba(16, 16, 16, 100);
+    font-size: 32rpx;
+    text-align: center;
+    font-family: PingFangSC-bold; 
+}

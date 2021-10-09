@@ -1,2 +1,30 @@
 <!--pages/remainAward/remainAward.wxml-->
-<text>pages/remainAward/remainAward.wxml</text>
+<!--pages/myAward/myAward.wxml-->
+
+<view class="container">
+    <image class="bg" mode="scaleToFill" src="http://192.168.50.51:5000/file/download/v2_r00vn1.jpg"></image>
+
+    <view class='up'>
+        <view class="out-room">
+            <image class="out-room-icon" src="http://192.168.50.51:5000/file/download/getout.png" bindtap="backHome"></image>
+        </view>
+        <view class="remain-award-title">剩余奖品</view>
+        <block wx:key="index" wx:for="{{awardList}}">
+            <block wx:if="{{item.count>0}}">
+                <view class="my-award-box">
+                    <image class="award-image" src="{{item.picture}}"></image>
+                    <view class="award-name-box">
+                        <view class="award-name">{{item.name}}</view>
+                        <view class="award-num-text">{{item.count}}台</view>
+                    </view>
+                </view>
+            </block>
+        </block>
+
+        <view class="guide">
+            <image src="http://192.168.50.51:5000/file/download/instruction.png" bindtap=""></image>
+            <image src="http://192.168.50.51:5000/file/download/home.png" bindtap="backGame"></image>
+            <image src="http://192.168.50.51:5000/file/download/donework.png" bindtap="toMyAward"></image>
+        </view>
+    </view>
+</view>
